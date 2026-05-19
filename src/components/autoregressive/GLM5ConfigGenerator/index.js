@@ -174,6 +174,11 @@ const GLM5ConfigGenerator = () => {
         cmd += ' \\\n  --enable-flashinfer-allreduce-fusion';
       }
 
+      // H200 FP8: flashinfer allreduce fusion
+      if (hardware === 'h200' && effectiveQuant === 'fp8') {
+        cmd += ' \\\n  --enable-flashinfer-allreduce-fusion';
+      }
+
       // Memory fraction based on hardware and quantization
       cmd += ` \\\n  --mem-fraction-static ${memFraction}`;
 
